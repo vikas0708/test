@@ -1,3 +1,0 @@
-ansible all -i inventory -m ping -u root -k
-ansible 'dev:&web' -i inventory -m ping -u root -k ----------- interaction
-ansible 'dev:web' -i inventory -m ping -u root -k ----------- Union

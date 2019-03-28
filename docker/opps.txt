@@ -1,0 +1,110 @@
+    1  apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common -y 
+    2  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    3  add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+    4  apt-get update
+    5  apt-get install docker-ce -y 
+    6  systemctl status docker.service 
+    7  docker version 
+    8  ls
+    9  mkdir docker
+   10  history > docker/install.txt
+   11  git add . 
+   12  git commit -m "Docker Install"; git push origin master
+   13  ls
+   14  cd 
+   15  ls
+   16  docker images 
+   17  docker ps
+   18  docker ps -a 
+   19  uname -a 
+   20  docker run busybox echo "Hello World"
+   21  docker run busybox echo "Welcome to the World of Docker"
+   22  docker images 
+   23  docker ps 
+   24  docker ps -a
+   25  ls
+   26  docker ps 
+   27  docker ps -a
+   28  docker run -it busybox 
+   29  docker ps 
+   30  docker ps -a
+   31  docker ps 
+   32  docker attach b16d63e0e66d
+   33  docker ps 
+   34  docker start b16d63e0e66d
+   35  docker ps 
+   36  docker attach b16d63e0e66d
+   37  ls
+   38  docker run -it ubuntu /bin/bash
+   39  docker ps 
+   40  docker inspect 4bab688898ea
+   41  curl 172.17.0.2
+   42  docker attach 4bab688898ea
+   43  curl 172.17.0.2
+   44  ip addr 
+   45  docker attach 4bab688898ea
+   46  ls
+   47  docker ps 
+   48  docker commit -p -m "My Apache Container" 4bab688898ea ubuntu-apache:v1
+   49  docker images
+   50  docker run -itd --name test-apach-01 ubuntu-apache:v1 /bin/bash
+   51  docker ps 
+   52  docker inspect test-apach-01
+   53  curl "172.17.0.3"
+   54  ip addr 
+   55  docker run -itd --name test-apach-02 -p 8090:80 ubuntu-apache:v1 /bin/bash
+   56  docker ps 
+   57  history 
+   58  docker state
+   59  docker stat
+   60  docker stats
+   61  history 
+   62  docker ps 
+   63  docker stop b4bbaaa9e05d
+   64  docker start b4bbaaa9e05d
+   65  docker ps 
+   66  ls
+   67  cd jenkins-adv-acc-2/
+   68  ls
+   69  history > docker/opps.txt
+   70  git add . ; git commit -m "Dcoker Ops"; git push origin master
+   71  ls
+   72  docker ps 
+   73  ls
+   74  cd docker/
+   75  ls
+   76  mkdir dockerfile
+   77  cd dockerfile/
+   78  ls
+   79  mkdir apache
+   80  cd apache/
+   81  ls
+   82  vim Dockerfile
+   83  docker build -t myapache:v1 .
+   84  ls
+   85  docker images 
+   86  docker run -itd --name test-apach-03 -p 8091:80 myapache:v1 /bin/bash
+   87  docker ps 
+   88  curl localhost:8091
+   89  docker run -d --name test-apach-04 -p 8092:80 myapache:v1
+   90  curl localhost:8091
+   91  curl localhost:8092
+   92  history 
+   93  ls
+   94  vim index.html
+   95  ls
+   96  vim Dockerfile 
+   97  docker build -t myapache:v2 .
+   98  docker run -d --name test-apach-05 -p 8093:80 myapache:v2
+   99  ls
+  100  vim index.html 
+  101  docker build -t myapache:v3 .
+  102  docker run -d --name test-apach-06 -p 8094:80 myapache:v3
+  103  ls
+  104  cd ../
+  105  ls
+  106  cd ..
+  107  ls
+  108  history > opps.txt 
