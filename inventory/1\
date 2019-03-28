@@ -1,4 +1,4 @@
-ansible_ssh_pass=redhat
+ansible_ssh_password = redhat
 n3]
 172.31.0.118
 
@@ -22,12 +22,13 @@ n3]
 172.31.0.115
 172.31.0.116
 
-[dc:children]
+
+[DC-West:children]
 web
 db
 
 
-[dc:vars]
+[DC-West:vars]
 ansible_ssh_user=root
 ansible_ssh_pass=redhat
 
