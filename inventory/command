@@ -1,0 +1,1 @@
+ansible all -i inventory -m ping -u root -k
