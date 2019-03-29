@@ -1,13 +1,11 @@
 ---
 - hosts: web
   sudo: yes
-  vars_prompt:
-  - name: "name"
-    prompt: "What is your name ?"
 
   vars: 
     http_port: 80
     doc_root: "/var/www/html"
+    name: Jenkins-CI_CD
 
   tasks:
   - name: Install Apache Packages on Ubuntu
@@ -41,6 +39,15 @@
 
   - name: Deploy Site Info template. 
     template: src=templates/info.j2 dest={{doc_root}}/info.html
+
+  - name: Install Java Packages
+    apt: name=openjdk-8-jdk state=present
+
+  - name: Deploy Atmosphere JAR File 
+    copy: src=templates/atmosphere-v1.jar dest={{doc_root}}/atmosphere-v1.jar
+
+  - name: Start the Atmosphere Application
+    shell: nohup /bin/java -jar {{doc_root}}/atmosphere-v1.jar & > nohup.out
 
   handlers:
   - name: Restart Apache
